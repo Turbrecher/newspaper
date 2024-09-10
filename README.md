@@ -1,5 +1,5 @@
 # Newspaper
-
+Newspaper is an open source newspaper model in which writers can create new articles. These articles can be seen by any other user who visits the website. 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.4.
 
 ## Development server
