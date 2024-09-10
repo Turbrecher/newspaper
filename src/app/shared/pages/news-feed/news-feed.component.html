@@ -1,1 +1,5 @@
-<p>news-feed works!</p>
+<article class="articles">
+    @for (article of articles; track $index) {
+        <app-article-card></app-article-card>
+    }
+</article>

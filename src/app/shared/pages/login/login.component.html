@@ -1,1 +1,11 @@
-<p>login works!</p>
+<h1>LOG IN</h1>
+
+<form [formGroup]="loginForm">
+
+    <app-input name="username" formControlName="username" title="Username" type="text" valid="{{username.valid}}"/>
+
+    <app-input name="password" formControlName="password" title="Password" type="password" valid="{{password.valid}}"/>
+
+    <app-button (click)="login()" text="Login"></app-button>
+
+</form>
