@@ -1,1 +1,11 @@
-<p>comment-card works!</p>
+<article class="comment">
+    <section class="image">
+        <img src="{{comment.user.photo}}" alt="Icon of the article">
+    </section>
+
+    <section class="info">
+        <p>{{comment.content}}</p>
+        <br>
+        <h5>{{comment.date}} | {{comment.time}}</h5>
+    </section>
+</article>

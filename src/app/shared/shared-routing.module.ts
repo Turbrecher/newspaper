@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewsFeedComponent } from './pages/news-feed/news-feed.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ArticleViewComponent } from './pages/article-view/article-view.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,10 @@ const routes: Routes = [
 
   {
     path: "register", component: RegisterComponent
+  },
+
+  {
+    path: "news/:id", component: ArticleViewComponent
   },
 
 

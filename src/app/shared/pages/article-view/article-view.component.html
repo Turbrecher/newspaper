@@ -1,1 +1,36 @@
-<p>article-view works!</p>
+<article class="article">
+
+    <section class="author_date">
+        <article class="author">
+            <img src="{{article.writer.photo}}" alt="">
+            <span>{{article.writer.name}} {{article.writer.surname}}</span>
+        </article>
+        <article class="date">
+            <span>{{article.date}} | {{article.time}}</span>
+        </article>
+    </section>
+
+    <section class="titles">
+        <h1>{{article.title}}</h1>
+        <h2>{{article.subtitle}}</h2>
+    </section>
+
+    <section class="content" [innerHTML]="article.content">
+    </section>
+
+
+    <section class="write_comment">
+        <form>
+            <h4>Tell us what you think!</h4>
+            <app-text-area></app-text-area>
+            <app-button text="Comment"></app-button>
+        </form>
+    </section>
+
+    <section class="comments">
+        @for (comment of comments; track $index) {
+        <app-comment-card></app-comment-card>
+        }
+    </section>
+
+</article>

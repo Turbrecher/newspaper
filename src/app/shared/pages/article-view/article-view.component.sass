@@ -1,0 +1,53 @@
+.article
+    display: grid
+    padding: 2rem
+    row-gap: 2rem
+    .author_date
+        align-items: center
+        display: flex
+        justify-content: space-between
+        width: 100%
+        .author
+            display: flex
+            align-items: center
+            gap: 1rem
+            img
+                border: solid black 1px
+                border-radius: 100%
+                width: 75px
+                height: 75px
+                object-fit: contain
+            span
+                font-size: 1.25rem
+                font-style: italic
+        .date
+            span
+                font-size: 1.10rem
+                font-style: italic
+
+    .titles
+        text-align: center
+        h1
+            font-size: 2.5rem
+        h2
+            font-size: 1.75rem
+    .content
+        display: grid
+        row-gap: 2rem
+        text-align: justify
+        p
+            font-size: 1.25rem
+
+    .write_comment
+        form
+            display: grid
+            row-gap: 1rem
+            text-align: center
+            app-button
+                margin: 0 auto
+
+    .comments
+        border-top: solid black 1px
+        display: grid
+        row-gap: 2rem
+        padding-top: 2rem

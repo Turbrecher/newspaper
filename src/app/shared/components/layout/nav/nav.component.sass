@@ -1,9 +1,21 @@
 nav
-    display: flex
-    justify-content: center
-    gap: 2rem
     border-bottom: solid black 1px
+    display: flex
+    gap: 2rem
+    justify-content: center
+    position: sticky
+    top: 0
+    padding: 1rem
+    z-index: 1
+    background: white
     a
-        padding: 1rem
-        text-decoration: none
         color: black
+        
+        position: relative
+        text-decoration: none
+        top: 0
+        transition: top ease 0.5s
+        &:hover
+            top: -10px
+    .active
+        top: -3px

@@ -1,5 +1,7 @@
 <article class="articles">
     @for (article of articles; track $index) {
-        <app-article-card></app-article-card>
+    <a routerLink="{{article.id}}">
+        <app-article-card [article]="article" />
+    </a>
     }
 </article>
