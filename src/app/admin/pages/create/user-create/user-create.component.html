@@ -1,1 +1,15 @@
-<p>user-create works!</p>
+<article class="user_create">
+
+    <h1>CREATE USER</h1>
+
+    <form [formGroup]="createUserForm">
+
+        <app-input formControlName="name" title="Name" type="text" valid="{{name.valid}}" />
+        <app-input formControlName="surname" title="Surname" type="text" valid="{{surname.valid}}" />
+        <app-input formControlName="username" title="Username" type="text" valid="{{email.valid}}" />
+        <app-input formControlName="email" title="Email" type="text" valid="{{email.valid}}" />
+        <app-input formControlName="password" title="Password" type="password" valid="{{password.valid}}" />
+        <app-button (click)="createUser()" text="CREATE" />
+
+    </form>
+</article>

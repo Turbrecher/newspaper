@@ -9,3 +9,5 @@ export interface Comment {
     date: string,
     time: string
 }
+
+export default Comment

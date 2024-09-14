@@ -1,1 +1,12 @@
-<p>comment-list works!</p>
+<article class="comment-list">
+    <h1>COMMENT LIST</h1>
+
+    <section class="comments">
+        @for (comment of nComments; track $index) {
+        <a routerLink="{{1}}">
+            <app-comment-card />
+        </a>
+        }
+    </section>
+
+</article>

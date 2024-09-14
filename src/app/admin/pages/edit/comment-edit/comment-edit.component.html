@@ -1,1 +1,13 @@
-<p>comment-edit works!</p>
+<article class="comment_edit">
+
+    <h1>EDIT COMMENT</h1>
+
+    <form [formGroup]="editCommentForm">
+
+        <app-input formControlName="user" title="User" type="text" valid="{{user.valid}}" />
+        <app-input formControlName="article" title="Article" type="text" valid="{{article.valid}}" />
+        <app-text-area formControlName="content" title="Content" valid="{{content.valid}}"/>
+        <app-button (click)="editComment()" text="EDIT" />
+
+    </form>
+</article>

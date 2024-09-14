@@ -1,16 +1,16 @@
 <div class="form-group">
-    <!-- LABEL -->
-    @if (title != "") {
-    <label>{{title}}</label>
-    }
+   <!-- LABEL -->
+   @if (title != "") {
+   <label>{{title}}</label>
+   }
 
-    <!-- input -->
-    <input type="{{type}}" [(ngModel)]="input" (ngModelChange)="onChange($event)">
+   <!-- input -->
+   <input type="{{type}}" [(ngModel)]="input" (ngModelChange)="onChange($event)">
 
-    <!-- error -->
-     @if (valid != "true") {
-        <label class="error">{{title}} is not valid.</label>
-     }
-     
+   <!-- error -->
+   @if (valid != "true") {
+   <label class="error">{{title}} is not valid.</label>
+   }
+
 
 </div>

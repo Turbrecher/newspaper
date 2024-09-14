@@ -1,5 +1,32 @@
 <nav>
-    <a routerLink="news" routerLinkActive="active">NEWS</a>
-    <a routerLink="login" routerLinkActive="active">LOGIN</a>
-    <a routerLink="register" routerLinkActive="active">REGISTER</a>
+    <a (click)="isAdmin=false" routerLink="news" routerLinkActive="active">NEWS</a>
+    <a (click)="isAdmin=false" routerLink="login" routerLinkActive="active">LOGIN</a>
+    <a (click)="isAdmin=false" routerLink="register" routerLinkActive="active">REGISTER</a>
+    <a (click)="isAdmin=true" routerLink="admin" routerLinkActive="active">ADMIN</a>
 </nav>
+
+@if (isAdmin == true || true) {
+
+<article class="admin_nav">
+    <h2>ADMIN NAVBAR</h2>
+    <section>
+        <h3>LIST</h3>
+        <article class="links">
+            <a routerLink="admin/list/users" routerLinkActive="active">USERS</a>
+            <a routerLink="admin/list/comments" routerLinkActive="active">COMMENTS</a>
+            <a routerLink="admin/list/articles" routerLinkActive="active">ARTICLES</a>
+        </article>
+    </section>
+
+    <section>
+        <h3>CREATE</h3>
+        <article class="links">
+            <a routerLink="admin/create/users" routerLinkActive="active">USER</a>
+            <a routerLink="admin/create/comments" routerLinkActive="active">COMMENT</a>
+            <a routerLink="admin/create/articles" routerLinkActive="active">ARTICLE</a>
+        </article>
+    </section>
+
+</article>
+
+}

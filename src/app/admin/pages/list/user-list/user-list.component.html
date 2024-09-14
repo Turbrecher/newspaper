@@ -1,1 +1,12 @@
-<p>user-list works!</p>
+<article class="user-list">
+    <h1>USER LIST</h1>
+
+    <section class="users">
+        @for (user of nUsers; track $index) {
+        <a routerLink="{{1}}">
+            <app-user-card></app-user-card>
+        </a>
+        }
+    </section>
+
+</article>

@@ -9,5 +9,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav.component.sass'
 })
 export class NavComponent {
-
+  isAdmin: boolean = false
 }

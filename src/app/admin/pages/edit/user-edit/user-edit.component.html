@@ -1,1 +1,15 @@
-<p>user-edit works!</p>
+<article class="user_edit">
+
+    <h1>EDIT USER</h1>
+
+    <form [formGroup]="editUserForm">
+
+        <app-input formControlName="name" title="Name" type="text" valid="{{name.valid}}" />
+        <app-input formControlName="surname" title="Surname" type="text" valid="{{surname.valid}}" />
+        <app-input formControlName="username" title="Username" type="text" valid="{{email.valid}}" />
+        <app-input formControlName="email" title="Email" type="text" valid="{{email.valid}}" />
+        <app-input formControlName="password" title="Password" type="password" valid="{{password.valid}}" />
+        <app-button (click)="editUser()" text="EDIT" />
+
+    </form>
+</article>
