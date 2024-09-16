@@ -8,6 +8,8 @@
         <app-input formControlName="article" title="Article" type="text" valid="{{article.valid}}" />
         <app-text-area formControlName="content" title="Content" valid="{{content.valid}}"/>
         <app-button (click)="editComment()" text="EDIT" />
+        <!-- delete button -->
+        <app-button (click)="deleteComment()" text="DELETE" />
 
     </form>
 </article>

@@ -13,6 +13,7 @@ import { User } from '../../../../shared/models/user';
 })
 export class UserEditComponent {
 
+
   public editUserForm!: FormGroup
 
   public user!: User
@@ -57,6 +58,10 @@ export class UserEditComponent {
 
   editUser() {
     console.log("Edited")
+  }
+
+  deleteUser() {
+    console.log("Deleted")
   }
 
 

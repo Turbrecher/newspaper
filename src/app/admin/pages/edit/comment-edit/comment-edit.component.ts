@@ -83,6 +83,10 @@ export class CommentEditComponent {
     console.log("edited")
   }
 
+  deleteComment(){
+    console.log("deleted")
+  }
+
 
   get content() {
     return this.editCommentForm.get("content") as FormControl
