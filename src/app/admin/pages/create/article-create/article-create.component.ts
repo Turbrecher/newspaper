@@ -13,9 +13,6 @@ import { Editor, NgxEditorModule } from 'ngx-editor';
 })
 export class ArticleCreateComponent {
 
-
-
-
   public createArticleForm!: FormGroup
   public html!: string
   public editor!: Editor

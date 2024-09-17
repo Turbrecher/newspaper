@@ -10,4 +10,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class NavComponent {
   isAdmin: boolean = false
+  isWriter: boolean = true
 }

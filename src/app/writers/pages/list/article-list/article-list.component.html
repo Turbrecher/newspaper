@@ -1,1 +1,12 @@
-<p>article-list works!</p>
+<article class="article-list">
+    <h1>ARTICLE LIST</h1>
+
+    <section class="articles">
+        @for (article of nArticles; track $index) {
+        <a routerLink="{{1}}">
+            <app-article-card />
+        </a>
+        }
+    </section>
+
+</article>
