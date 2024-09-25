@@ -2,8 +2,8 @@
 
     <section class="author_date">
         <article class="author">
-            <img src="{{article.writer.photo}}" alt="">
-            <span>{{article.writer.name}} {{article.writer.surname}}</span>
+            <img src="{{article.writer?.photo}}" alt="">
+            <span>{{article.writer?.name}} {{article.writer?.surname}}</span>
         </article>
         <article class="date">
             <span>{{article.date}} | {{article.time}}</span>
@@ -29,7 +29,7 @@
 
     <section class="comments">
         @for (comment of comments; track $index) {
-        <app-comment-card></app-comment-card>
+        <app-comment-card [comment]="comment"></app-comment-card>
         }
     </section>
 

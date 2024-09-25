@@ -60,8 +60,8 @@ export class CommentEditComponent {
     }
 
 
-    this.article.setValue(this.comment.article.id)
-    this.user.setValue(this.comment.user.id)
+    this.article.setValue(this?.comment?.article?.id)
+    this.user.setValue(this?.comment?.user?.id)
     this.content.setValue(this.comment.content)
 
 

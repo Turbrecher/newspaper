@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Comment } from '../../models/comment';
 
 @Component({
@@ -9,7 +9,7 @@ import { Comment } from '../../models/comment';
   styleUrl: './comment-card.component.sass'
 })
 export class CommentCardComponent {
-  comment: Comment = {
+  @Input() comment: any = {
     id: 1,
     content: "This is a comment",
     date: "09-12-2024",

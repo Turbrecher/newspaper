@@ -52,7 +52,7 @@ export class ArticleEditComponent {
     this.editArticleForm.get("subtitle")?.setValue(this.article.subtitle)
     this.editArticleForm.get("content")?.setValue(this.article.content)
     this.editArticleForm.get("photo")?.setValue(this.article.photo)
-    this.editArticleForm.get("writer")?.setValue(this.article.writer.name)
+    this.editArticleForm.get("writer")?.setValue(this?.article?.writer?.name)
   }
 
   createForm() {
