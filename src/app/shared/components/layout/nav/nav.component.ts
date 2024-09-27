@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { ProfileService } from '../../../services/profile.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +11,37 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './nav.component.sass'
 })
 export class NavComponent {
-  isAdmin: boolean = false
-  isWriter: boolean = true
+  public isAdmin: boolean = false
+  public isWriter: boolean = false
+  public isAuthenticated: boolean = false
+
+
+  constructor(private cookieService: CookieService, private profileService: ProfileService, private router: Router) {
+
+  }
+
+
+  ngOnInit() {
+    //Check authentication.
+    if (this.cookieService.get("token")) {
+      this.isAuthenticated = true;
+    } else {
+      this.isAuthenticated = false;
+    }
+  }
+
+
+  logout() {
+    this.profileService.logout(this.cookieService.get("token")).subscribe({
+      next: (response) => {
+        alert(response.message);
+        this.cookieService.set("token", "", -1000);
+        this.ngOnInit();
+        this.router.navigate(['login'])
+      },
+      error: (err) => { alert(err.message) },
+    })
+  }
+
+
 }

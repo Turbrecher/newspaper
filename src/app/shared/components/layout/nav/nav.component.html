@@ -1,10 +1,20 @@
+@if (!isAuthenticated) {
+
 <nav>
-    <a (click)="isAdmin=false;isWriter=false" routerLink="news" routerLinkActive="active">NEWS</a>
-    <a (click)="isAdmin=false;isWriter=false" routerLink="login" routerLinkActive="active">LOGIN</a>
-    <a (click)="isAdmin=false;isWriter=false" routerLink="register" routerLinkActive="active">REGISTER</a>
-    <a (click)="isAdmin=true;isWriter=false" routerLink="admin" routerLinkActive="active">ADMIN</a>
-    <a (click)="isAdmin=false;isWriter=true" routerLink="writer" routerLinkActive="active">WRITER</a>
+    <a routerLink="news" routerLinkActive="active">NEWS</a>
+    <a routerLink="login" routerLinkActive="active">LOGIN</a>
+    <a routerLink="register" routerLinkActive="active">REGISTER</a>
 </nav>
+
+}@else {
+
+<nav>
+    <a routerLink="news" routerLinkActive="active">NEWS</a>
+    <a routerLink="profile" routerLinkActive="active">PROFILE</a>
+    <a (click)="logout()" routerLinkActive="active">LOGOUT</a>
+</nav>
+
+}
 
 @if (isAdmin == true) {
 

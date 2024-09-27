@@ -20,10 +20,10 @@
 
 
     <section class="write_comment">
-        <form>
+        <form [formGroup]="commentForm">
             <h4>Tell us what you think!</h4>
-            <app-text-area></app-text-area>
-            <app-button text="Comment"></app-button>
+            <app-text-area formControlName="comment"></app-text-area>
+            <app-button (click)="createComment($event)" text="Comment"></app-button>
         </form>
     </section>
 

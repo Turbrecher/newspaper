@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ControlValueAccessor, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputComponent } from "../../components/form/input/input.component";
 import { ButtonComponent } from "../../components/form/button/button.component";
+import { ProfileService } from '../../services/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { ButtonComponent } from "../../components/form/button/button.component";
   templateUrl: './register.component.html',
   styleUrl: './register.component.sass'
 })
-export class RegisterComponent implements ControlValueAccessor {
+export class RegisterComponent {
 
 
   public registerForm!: FormGroup
@@ -25,42 +27,37 @@ export class RegisterComponent implements ControlValueAccessor {
         "name": ["", [Validators.required]],
         "surname": ["", [Validators.required]],
         "username": ["", [Validators.required]],
-        "email": ["", [Validators.required]],
-        "password": ["", [Validators.required]],
+        "email": ["", [Validators.required, Validators.email]],
+        "password": ["", [Validators.required, Validators.pattern(/^[A-Za-z0-9?¿_-]{5,50}|^$/)]],
       }
     )
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private profileService: ProfileService, private router: Router) {
 
   }
 
-  //VALUE ACCESSORS ATTRIBUTES.
-  input!: string
-  onChange = () => { }
-  onTouched = () => { }
-  //VALUE ACCESSORS METHODS.
-  writeValue(input: string): void {
-    this.input = input
-  }
-  registerOnChange(fn: any): void {
-    this.onChange = fn
-  }
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn
-  }
 
 
 
   //Function that register this user in the DB.
   register() {
-    console.log({
+
+    let user = {
       "username": this.username.value,
-      "password": this.username.value,
-      "name": this.username.value,
-      "surname": this.username.value,
-      "email": this.username.value,
+      "password": this.password.value,
+      "name": this.name.value,
+      "surname": this.surname.value,
+      "email": this.email.value,
+    }
+
+    console.log(user)
+    this.profileService.registerUser(user).subscribe({
+      next: (response) => { alert(response.message); this.router.navigate(['login']) },
+      error: (err) => { alert(err.message) }
     })
+
+
   }
 
 

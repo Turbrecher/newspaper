@@ -2,6 +2,9 @@ import { Component, forwardRef } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputComponent } from "../../components/form/input/input.component";
 import { ButtonComponent } from "../../components/form/button/button.component";
+import { ProfileService } from '../../services/profile.service';
+import { CookieService } from "ngx-cookie-service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +19,7 @@ export class LoginComponent {
 
 
   //CONSTRUCTOR
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private profileService: ProfileService, private cookieService: CookieService, private router: Router) {
 
   }
 
@@ -24,7 +27,7 @@ export class LoginComponent {
     this.createForm()
   }
 
-  createForm(){
+  createForm() {
     this.loginForm = this.fb.group({
       "username": ["", [Validators.required]],
       "password": ["", [Validators.required]],
@@ -42,10 +45,17 @@ export class LoginComponent {
 
   //Login function.
   login() {
-    console.log({
-      "username":this.username.value,
-      "password":this.password.value,
+    let user = {
+      "username": this.username.value,
+      "password": this.password.value,
+    }
+
+    this.profileService.loginUser(user).subscribe({
+      next: (response) => { alert(response.message); this.cookieService.set("token", response.token); location.href = "news" },
+      error: (error) => { alert(error.message); this.cookieService.set('token', '', -1000) },
     })
+
+
 
   }
 
