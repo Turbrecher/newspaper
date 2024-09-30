@@ -28,6 +28,31 @@ export class NavComponent {
     } else {
       this.isAuthenticated = false;
     }
+
+
+
+    //Check roles
+    this.profileService.getRole(this.cookieService.get("token")).subscribe(
+      {
+        next: (response) => {
+          if (response.role == "writer") {
+            this.isWriter = true;
+          } else {
+            this.isWriter = false;
+          }
+
+          if (response.role == "admin") {
+            this.isAdmin = true;
+          } else {
+            this.isAdmin = false;
+          }
+
+        },
+        error: (err) => {
+          
+        }
+      }
+    )
   }
 
 

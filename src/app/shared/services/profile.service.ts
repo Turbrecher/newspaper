@@ -34,4 +34,11 @@ export class ProfileService {
     return this.http.post<any>(Api.URL + "logout", {}, { headers });
 
   }
+
+
+  getRole(token: string) {
+    let headers = { "Authorization": "Bearer " + token }
+
+    return this.http.post<any>(Api.URL + "role", {}, { headers });
+  }
 }

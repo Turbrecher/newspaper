@@ -62,7 +62,7 @@ export class ArticleViewComponent {
     }
 
     this.commentService.createComment(comment).subscribe({
-      next: (success) => { console.log(success); location.reload() },
+      next: (success) => { console.log(success);this.comment.setValue(""); this.ngOnInit() },
       error: (error) => { console.log(error.message) }
     })
   }

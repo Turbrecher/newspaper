@@ -1,1 +1,26 @@
-<p>article-edit works!</p>
+<article class="article_edit">
+
+    <h1>EDIT ARTICLE</h1>
+
+    <form [formGroup]="editArticleForm">
+
+        <!-- article -->
+        <article class="NgxEditor__Wrapper">
+            <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+            <ngx-editor formControlName="content" [editor]="editor" placeholder="Your article here."></ngx-editor>
+        </article>
+
+        <!-- inputs -->
+        <app-input formControlName="title" title="Title" type="text" valid="{{title.valid}}" />
+        <app-input formControlName="subtitle" title="Subtitle" type="text" valid="{{subtitle.valid}}" />
+        <app-input formControlName="photo" title="Photo" type="text" valid="{{photo.valid}}" />
+
+        
+
+        <!-- create button -->
+        <app-button (click)="editArticle()" text="EDIT" />
+        <!-- delete button -->
+        <app-button (click)="deleteArticle()" text="DELETE" />
+
+    </form>
+</article>
