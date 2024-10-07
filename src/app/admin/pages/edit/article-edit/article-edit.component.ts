@@ -38,7 +38,7 @@ export class ArticleEditComponent {
       time: "20:00",
       photo: "newspaper_logo.png",
       writer: {
-        id: 1,
+        id: "1",
         username: "Vittorio",
         name: "Victor",
         surname: "Vera",

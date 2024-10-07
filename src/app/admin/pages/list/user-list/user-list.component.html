@@ -2,9 +2,9 @@
     <h1>USER LIST</h1>
 
     <section class="users">
-        @for (user of nUsers; track $index) {
-        <a routerLink="{{1}}">
-            <app-user-card></app-user-card>
+        @for (user of users; track $index) {
+        <a routerLink="{{user.id}}">
+            <app-user-card [user]="user"></app-user-card>
         </a>
         }
     </section>

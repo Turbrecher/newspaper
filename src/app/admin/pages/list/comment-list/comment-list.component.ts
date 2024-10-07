@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommentCardComponent } from "../../../../shared/components/comment-card/comment-card.component";
 import { RouterLink } from '@angular/router';
+import Comment from '../../../../shared/models/comment';
+import { CommentAdminService } from '../../../services/comment-admin.service';
 
 @Component({
   selector: 'app-comment-list',
@@ -10,5 +12,17 @@ import { RouterLink } from '@angular/router';
   styleUrl: './comment-list.component.sass'
 })
 export class CommentListComponent {
-  nComments :Array<number> = [0,1,2,3,4,5,6,7,8,9,9,1,2,2,34]
+  comments !: Array<Comment>
+
+  constructor(private commentAdminService: CommentAdminService) {
+
+  }
+
+
+  ngOnInit() {
+    this.commentAdminService.getAllComments()
+      .subscribe((comments) => {
+        this.comments = comments
+      })
+  }
 }

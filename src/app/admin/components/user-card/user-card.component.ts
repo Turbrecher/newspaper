@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../../../shared/models/user';
 
 @Component({
@@ -9,8 +9,8 @@ import { User } from '../../../shared/models/user';
   styleUrl: './user-card.component.sass'
 })
 export class UserCardComponent {
-  user: User = {
-    id: 1,
+  @Input() user: User = {
+    id: "1",
     username: "Vittorio",
     name: "Victor",
     surname: "Vera",

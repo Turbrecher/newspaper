@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UserCardComponent } from "../../../components/user-card/user-card.component";
 import { RouterLink } from '@angular/router';
+import { User } from '../../../../shared/models/user';
+import { UserAdminService } from '../../../services/user-admin.service';
 
 @Component({
   selector: 'app-user-list',
@@ -10,5 +12,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './user-list.component.sass'
 })
 export class UserListComponent {
-  nUsers: Array<any> = [1, 2, 3, 4, 5, 6, 7, 8, 8, 9, 0]
+  users!: Array<User>
+
+
+  constructor(private userAdminService: UserAdminService) { }
+
+  ngOnInit() {
+    this.userAdminService.getAllUsers().subscribe((users) => {
+      this.users = users
+    })
+  }
 }

@@ -2,9 +2,9 @@
     <h1>COMMENT LIST</h1>
 
     <section class="comments">
-        @for (comment of nComments; track $index) {
-        <a routerLink="{{1}}">
-            <app-comment-card />
+        @for (comment of comments; track $index) {
+        <a routerLink="{{comment.id}}">
+            <app-comment-card [comment]="comment" />
         </a>
         }
     </section>

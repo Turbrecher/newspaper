@@ -39,7 +39,7 @@ export class CommentEditComponent {
         time: "16:38",
         photo: "newspaper_logo.png",
         writer: {
-          id: 1,
+          id: "1",
           username: "Vittorio",
           name: "Victor",
           surname: "Vera",
@@ -49,7 +49,7 @@ export class CommentEditComponent {
         }
       },
       user: {
-        id: 1,
+        id: "1",
         username: "Vittorio",
         name: "Victor",
         surname: "Vera",
