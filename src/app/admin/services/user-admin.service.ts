@@ -33,4 +33,20 @@ export class UserAdminService {
 
     return this.http.put(Api.URL + "users/" + id, user, { headers });
   }
+
+
+  createUser(user: User) {
+    let headers = { "Authorization": "Bearer " + this.cookieService.get("token") }
+
+
+    return this.http.post(Api.URL + "register/", user, { headers });
+  }
+
+
+  deleteUser(id: String) {
+    let headers = { "Authorization": "Bearer " + this.cookieService.get("token") }
+
+
+    return this.http.delete(Api.URL + "users/" + id, { headers });
+  }
 }

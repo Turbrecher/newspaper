@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators, FormControl, ReactiveFormsModule, F
 import { ButtonComponent } from "../../../../shared/components/form/button/button.component";
 import { InputComponent } from "../../../../shared/components/form/input/input.component";
 import { Editor, NgxEditorModule } from 'ngx-editor';
+import { Article } from '../../../../shared/models/article';
+import { ArticleAdminService } from '../../../services/article-admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-create',
@@ -18,7 +21,7 @@ export class ArticleCreateComponent {
   public editor!: Editor
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private articleAdminService: ArticleAdminService, private router: Router) {
 
   }
 
@@ -42,7 +45,23 @@ export class ArticleCreateComponent {
   }
 
   createArticle() {
-    console.log(this.createArticleForm.value)
+    let article: Article = {
+      title: this.title.value,
+      subtitle: this.subtitle.value,
+      photo: this.photo.value,
+      content: this.content.value
+    }
+
+
+    this.articleAdminService.createArticle(article).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.router.navigate(['admin/list/articles'])
+      },
+      error: (err) => { console.log(err) },
+    })
+
+
   }
 
   get title() {

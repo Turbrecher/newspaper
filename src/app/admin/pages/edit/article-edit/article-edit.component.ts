@@ -4,6 +4,8 @@ import { ButtonComponent } from "../../../../shared/components/form/button/butto
 import { FormGroup, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Editor, NgxEditorModule, Validators } from 'ngx-editor';
 import { Article } from '../../../../shared/models/article';
+import { ArticleAdminService } from '../../../services/article-admin.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-edit',
@@ -18,10 +20,10 @@ export class ArticleEditComponent {
   public editArticleForm!: FormGroup
   public html!: string
   public editor!: Editor
-  public article!:Article
+  public article!: Article
 
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private articleAdminService: ArticleAdminService, private activatedRoute: ActivatedRoute, private router:Router) {
 
   }
 
@@ -29,30 +31,23 @@ export class ArticleEditComponent {
     this.html = ""
     this.editor = new Editor()
     this.createForm()
-    this.article = {
-      id: 1,
-      title: "Default Title of the article",
-      subtitle: "Subtitle",
-      content: "<p style='color:blue'>The downfall of everything</p>",
-      date: "2002-04-25",
-      time: "20:00",
-      photo: "newspaper_logo.png",
-      writer: {
-        id: "1",
-        username: "Vittorio",
-        name: "Victor",
-        surname: "Vera",
-        email: "victor@correo.es",
-        password: "12345678",
-        photo:"victor.png"
-      }
-    }
+    this.articleAdminService.getArticle(this.activatedRoute.snapshot.params['id']).subscribe({
+      next: (response) => {
 
-    this.editArticleForm.get("title")?.setValue(this.article.title)
-    this.editArticleForm.get("subtitle")?.setValue(this.article.subtitle)
-    this.editArticleForm.get("content")?.setValue(this.article.content)
-    this.editArticleForm.get("photo")?.setValue(this.article.photo)
-    this.editArticleForm.get("writer")?.setValue(this?.article?.writer?.name)
+        this.article = response
+        this.editArticleForm.get("title")?.setValue(this.article.title)
+        this.editArticleForm.get("subtitle")?.setValue(this.article.subtitle)
+        this.editArticleForm.get("content")?.setValue(this.article.content)
+        this.editArticleForm.get("photo")?.setValue(this.article.photo)
+        this.editArticleForm.get("writer")?.setValue(this?.article?.writer?.name)
+
+      },
+      error: (err) => {
+
+      },
+    })
+
+
   }
 
   createForm() {
@@ -72,8 +67,14 @@ export class ArticleEditComponent {
     console.log(this.editArticleForm.value)
   }
 
-  deleteArticle(){
-    console.log("deleted")
+  deleteArticle() {
+    this.articleAdminService.deleteArticle(this.activatedRoute.snapshot.params['id']).subscribe({
+      next: (response) => { 
+        console.log(response) 
+        this.router.navigate(['admin/list/articles'])
+      },
+      error: (err) => { console.log(err) },
+    })
   }
 
   get title() {

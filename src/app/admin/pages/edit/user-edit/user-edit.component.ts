@@ -61,6 +61,7 @@ export class UserEditComponent {
   }
 
 
+  //Function that edits an user.
   editUser() {
 
 
@@ -95,8 +96,28 @@ export class UserEditComponent {
 
   }
 
+  //Function that deletes an user.
   deleteUser() {
-    console.log("Deleted")
+
+    if(confirm("Are you sure about deleting this user?")){
+      if(confirm("Buuut are you completely sure about it?")){
+
+        if(confirm("Okay, last time I ask, are you really sure about this?")){
+
+        }
+
+      }
+    }
+
+
+
+    this.userAdminService.deleteUser(this.activatedRoute.snapshot.params["id"]).subscribe({
+      next: (response) => {
+        console.log(response)
+        this.router.navigate(['admin/list/users'])
+      },
+      error: (err) => { console.log(err) },
+    })
   }
 
 

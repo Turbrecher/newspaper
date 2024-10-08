@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { InputComponent } from "../../../../shared/components/form/input/input.component";
 import { ButtonComponent } from "../../../../shared/components/form/button/button.component";
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { UserAdminService } from '../../../services/user-admin.service';
 
 @Component({
   selector: 'app-user-create',
@@ -14,7 +15,7 @@ export class UserCreateComponent {
 
   public createUserForm!: FormGroup
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userAdminService: UserAdminService) {
 
   }
 
@@ -37,7 +38,20 @@ export class UserCreateComponent {
 
 
   createUser() {
-    console.log("Creado")
+
+    let user = {
+      name: this.name.value,
+      surname: this.surname.value,
+      username: this.username.value,
+      password: this.password.value,
+      email: this.email.value,
+    }
+
+
+    this.userAdminService.createUser(user).subscribe({
+      next:(response)=>{console.log(response)},
+      error:(err)=>{console.log(err)},
+    })
   }
 
 
